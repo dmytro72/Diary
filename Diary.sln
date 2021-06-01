@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diary", "Diary\Diary.csproj", "{483B11A0-6785-4618-ABD6-748B79AB58B8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{935D0DFF-1D51-4983-A1E9-74AFED9FF2A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryConsole", "Tests\DiaryConsole\DiaryConsole.csproj", "{27519B64-F94A-4D99-A1E4-53DAB37FF247}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{483B11A0-6785-4618-ABD6-748B79AB58B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{483B11A0-6785-4618-ABD6-748B79AB58B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{483B11A0-6785-4618-ABD6-748B79AB58B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27519B64-F94A-4D99-A1E4-53DAB37FF247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27519B64-F94A-4D99-A1E4-53DAB37FF247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27519B64-F94A-4D99-A1E4-53DAB37FF247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27519B64-F94A-4D99-A1E4-53DAB37FF247}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27519B64-F94A-4D99-A1E4-53DAB37FF247} = {935D0DFF-1D51-4983-A1E9-74AFED9FF2A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DA7766A-50AE-4299-9CA2-3D2E851136F1}
