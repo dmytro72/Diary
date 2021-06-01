@@ -6,7 +6,7 @@ namespace DiaryConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine($"{Int32.Parse("09")}");
         }
     }
 }
