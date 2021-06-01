@@ -1,5 +1,8 @@
-﻿using DiaryWPFTest.ViewModels.Base;
+﻿using DiaryWPFTest.Infrastructure.Commands;
+using DiaryWPFTest.ViewModels.Base;
 using System;
+using System.Windows;
+using System.Windows.Input;
 
 namespace DiaryWPFTest.ViewModels
 {
@@ -66,5 +69,35 @@ namespace DiaryWPFTest.ViewModels
         #endregion
 
         #endregion
+
+        #region Commands
+
+        #region CloseCommand
+
+        public ICommand CloseApplicationCommand
+        {
+            get;
+        }
+
+        private bool CanCloseApplicationCommand(object p) => true;
+
+        private void OnCloseApplicationCommand(object p)
+        {
+            Application.Current.Shutdown();
+        }
+
+        #endregion
+
+        #endregion
+
+        public MainWindowViewModel()
+        {
+            #region Commands
+
+            CloseApplicationCommand = new ActionCommand(OnCloseApplicationCommand, CanCloseApplicationCommand);
+
+            #endregion
+
+        }
     }
 }
