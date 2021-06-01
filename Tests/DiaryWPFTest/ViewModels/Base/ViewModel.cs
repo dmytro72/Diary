@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Diary.ViewModels.Base
+namespace DiaryWPFTest.ViewModels.Base
 {
     internal abstract class ViewModel : INotifyPropertyChanged
     {
