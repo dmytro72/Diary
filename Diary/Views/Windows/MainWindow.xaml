@@ -20,6 +20,15 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
+                <Label Content="Next Task:" Width="65" Margin="5,0"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding SelectedTask}" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <Label Content="Selected Task:" Width="85" Margin="5,0"/>
+            </StatusBarItem>
+            <StatusBarItem>
                 <TextBlock Text="{Binding SelectedTask}" />
             </StatusBarItem>
         </StatusBar>
@@ -199,13 +208,23 @@
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="{Binding Day}">
                         <DockPanel>
+                            <DockPanel.Resources>
+                                <CollectionViewSource x:Key="TasksCollection"
+                                                      x:Name="TasksCollection"
+                                                      Source="{Binding TasksForDay}"
+                                                      Filter="TasksCollectionFilter"/>
+                            </DockPanel.Resources>
+                            <DockPanel DockPanel.Dock="Top" Margin="0,3">
+                                <TextBlock Text="Search:" Width="45" Margin="3,0" />
+                                <TextBox Name="TaskPlaceFilterText" TextChanged="OnTasksFilterTextChanged"/>
+                            </DockPanel>                            
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
                                 <Button Content="Delete" Margin="3,0" Padding="3,5" Background="White"
                                         Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding SelectedTask}" />
                                 <Button Content="Move" Margin="3,0" Padding="3,5" Background="White"
                                         Command="{Binding MoveTaskCommand}" CommandParameter="{Binding SelectedTask}" />
                             </UniformGrid>
-                            <DataGrid ItemsSource="{Binding TasksForDay}"
+                            <DataGrid ItemsSource="{Binding Source={StaticResource TasksCollection}}"
                                       SelectedItem="{Binding SelectedTask}"
                                   AutoGenerateColumns="False"
                                   IsReadOnly="True"
