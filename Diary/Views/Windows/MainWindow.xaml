@@ -202,6 +202,8 @@
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
                                 <Button Content="Delete" Margin="3,0" Padding="3,5" Background="White"
                                         Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding SelectedTask}" />
+                                <Button Content="Move" Margin="3,0" Padding="3,5" Background="White"
+                                        Command="{Binding MoveTaskCommand}" CommandParameter="{Binding SelectedTask}" />
                             </UniformGrid>
                             <DataGrid ItemsSource="{Binding TasksForDay}"
                                       SelectedItem="{Binding SelectedTask}"

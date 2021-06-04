@@ -265,6 +265,41 @@ namespace Diary.ViewModels
 
         #endregion
 
+        #region MoveTaskCommand
+
+        public ICommand MoveTaskCommand
+        {
+            get;
+        }
+
+        private bool CanMoveTaskCommand(object p) => p is Task task && TasksForDay.Contains(task);
+
+        private void OnMoveTaskCommand(object p)
+        {
+            if (!(p is Task task)) return;
+            var task_index = TasksForDay.IndexOf(task);
+            TasksForDay.Remove(task);
+            diary.DeleteTask(task);
+            StartHours = $"{task.Start:HH}";
+            StartMinutes = $"{task.Start:mm}";
+            TimeSpan duration = task.End - task.Start;
+            DurationHours = $"{duration:hh}";
+            DurationMinutes = $"{duration:mm}";
+            Place = task.Place;
+            TaskName = task.Name;
+            if (task_index < TasksForDay.Count)
+            {
+                SelectedTask = TasksForDay[task_index];
+            }
+            else
+            {
+                SelectedTask = null;
+            }
+            
+        }
+
+        #endregion
+
         #endregion
 
         private SimpleDiary diary;
@@ -279,6 +314,7 @@ namespace Diary.ViewModels
             AddTaskCommand = new ActionCommand(OnAddTaskCommand, CanAddTaskCommand);
             DeleteTaskCommand = new ActionCommand(OnDeleteTaskCommand, CanDeleteTaskCommand);
             SaveFileCommand = new ActionCommand(OnSaveFileCommand, CanSaveFileCommand);
+            MoveTaskCommand = new ActionCommand(OnMoveTaskCommand, CanMoveTaskCommand);
 
             #endregion
 
