@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 
 namespace DiaryConsole
 {
@@ -6,7 +9,9 @@ namespace DiaryConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"{Int32.Parse("09")}");
+            string obj = File.ReadAllText("data.json") ?? "[]";
+            SortedSet<int> tasks = JsonSerializer.Deserialize<SortedSet<int>>("[]");
+            Console.WriteLine($"{tasks.Count}  {obj}");
         }
     }
 }
