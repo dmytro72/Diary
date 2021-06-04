@@ -121,6 +121,18 @@ namespace Diary.ViewModels
 
         #endregion
 
+        #region SelectedTaskProperty
+
+        private Task _selectedTask;
+
+        public Task SelectedTask
+        {
+            get => _selectedTask;
+            set => Set(ref _selectedTask, value);
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -209,6 +221,29 @@ namespace Diary.ViewModels
 
         #endregion
 
+        #region DeleteTaskCommand
+
+        public ICommand DeleteTaskCommand
+        {
+            get;
+        }
+
+        private bool CanDeleteTaskCommand(object p) => p is Task task && TasksForDay.Contains(task);
+
+        private void OnDeleteTaskCommand(object p)
+        {
+            if (!(p is Task task)) return;
+            var task_index = TasksForDay.IndexOf(task);
+            TasksForDay.Remove(task);
+            diary.DeleteTask(task);
+            if (task_index < TasksForDay.Count)
+            {
+                SelectedTask = TasksForDay[task_index];
+            }
+        }
+
+        #endregion
+
         #endregion
 
         private SimpleDiary diary;
@@ -221,6 +256,7 @@ namespace Diary.ViewModels
             CreateNewTaskCommand = new ActionCommand(OnCreateNewTaskCommand, CanCreateNewTaskCommand);
             ViewTasksForDayCommand = new ActionCommand(OnViewTasksForDayCommand, CanViewTasksForDayCommand);
             AddTaskCommand = new ActionCommand(OnAddTaskCommand, CanAddTaskCommand);
+            DeleteTaskCommand = new ActionCommand(OnDeleteTaskCommand, CanDeleteTaskCommand); 
 
             #endregion
 

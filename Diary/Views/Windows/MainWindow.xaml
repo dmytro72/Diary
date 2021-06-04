@@ -19,7 +19,7 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Text="1234" />
+                <TextBlock Text="{Binding SelectedTask}" />
             </StatusBarItem>
         </StatusBar>
         <TabControl>
@@ -197,19 +197,26 @@
                                 Command="{Binding AddTaskCommand}"/>
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="{Binding Day}">
-                        <DataGrid ItemsSource="{Binding TasksForDay}"
+                        <DockPanel>
+                            <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
+                                <Button Content="Delete" Margin="3,0" Padding="3,5" Background="White"
+                                        Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding SelectedTask}" />
+                            </UniformGrid>
+                            <DataGrid ItemsSource="{Binding TasksForDay}"
+                                      SelectedItem="{Binding SelectedTask}"
                                   AutoGenerateColumns="False"
                                   IsReadOnly="True"
                                   GridLinesVisibility="Vertical"
                                   VerticalGridLinesBrush="DarkGray"
                                   AlternatingRowBackground="LightGray">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Start" Binding="{Binding Start, StringFormat=HH:mm}"/>
-                                <DataGridTextColumn Header="End" Binding="{Binding End, StringFormat=HH:mm}"/>
-                                <DataGridTextColumn Header="Place" Binding="{Binding Place}"/>
-                                <DataGridTextColumn Header="Task" Binding="{Binding Name}" Width="*" />
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Start" Binding="{Binding Start, StringFormat=HH:mm}"/>
+                                    <DataGridTextColumn Header="End" Binding="{Binding End, StringFormat=HH:mm}"/>
+                                    <DataGridTextColumn Header="Place" Binding="{Binding Place}"/>
+                                    <DataGridTextColumn Header="Task" Binding="{Binding Name}" Width="*" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DockPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>
