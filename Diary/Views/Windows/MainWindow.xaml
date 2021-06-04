@@ -39,7 +39,7 @@
                                     SelectedDate="{Binding Day}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectedDateChanged" SourceObject="{Binding ElementName=datePicker}">
-                                        <i:InvokeCommandAction Command="{Binding TasksForDay}" />
+                                        <i:InvokeCommandAction Command="{Binding ViewTasksForDayCommand}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </DatePicker>
@@ -196,7 +196,7 @@
                                 Margin="10"
                                 Command="{Binding AddTaskCommand}"/>
                     </StackPanel>
-                    <GroupBox Grid.Column="1" Header="{Binding Day, StringFormat=dd.MM.yyyy}">
+                    <GroupBox Grid.Column="1" Header="{Binding Day}">
                         <DataGrid ItemsSource="{Binding TasksForDay}"
                                   AutoGenerateColumns="False"
                                   IsReadOnly="True"
