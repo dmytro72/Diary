@@ -2,7 +2,7 @@
 
 namespace Diary.Models
 {
-    public struct Task : IComparable<Task>
+    public class Task : IComparable<Task>
     {
         public DateTime Start { get; set; }
         public DateTime End { get; set; }

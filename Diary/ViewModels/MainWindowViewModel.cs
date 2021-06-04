@@ -11,6 +11,7 @@ namespace Diary.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        public const string FILENAME = "data.json";
         #region Property
 
         #region DayProperty
@@ -240,6 +241,26 @@ namespace Diary.ViewModels
             {
                 SelectedTask = TasksForDay[task_index];
             }
+            else
+            {
+                SelectedTask = null;
+            }
+        }
+
+        #endregion
+
+        #region SaveFileCommand
+
+        public ICommand SaveFileCommand
+        {
+            get;
+        }
+
+        private bool CanSaveFileCommand(object p) => true;
+
+        private void OnSaveFileCommand(object p)
+        {
+            diary.ToFile(FILENAME);
         }
 
         #endregion
@@ -256,11 +277,12 @@ namespace Diary.ViewModels
             CreateNewTaskCommand = new ActionCommand(OnCreateNewTaskCommand, CanCreateNewTaskCommand);
             ViewTasksForDayCommand = new ActionCommand(OnViewTasksForDayCommand, CanViewTasksForDayCommand);
             AddTaskCommand = new ActionCommand(OnAddTaskCommand, CanAddTaskCommand);
-            DeleteTaskCommand = new ActionCommand(OnDeleteTaskCommand, CanDeleteTaskCommand); 
+            DeleteTaskCommand = new ActionCommand(OnDeleteTaskCommand, CanDeleteTaskCommand);
+            SaveFileCommand = new ActionCommand(OnSaveFileCommand, CanSaveFileCommand);
 
             #endregion
 
-            diary = SimpleDiary.FromFile("data.json");
+            diary = SimpleDiary.FromFile(FILENAME);
             TasksForDay = new ObservableCollection<Task>(diary.TasksAtDay(DateTime.Today));
         }
     }

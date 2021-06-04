@@ -13,7 +13,8 @@
     </Window.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Main">
+            <MenuItem Header="File">
+                <MenuItem Header="Save" Command="{Binding SaveFileCommand}" />
                 <MenuItem Header="Exit" Command="{Binding CloseApplicationCommand}" />
             </MenuItem>
         </Menu>
