@@ -4,6 +4,7 @@ using Diary.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -134,6 +135,30 @@ namespace Diary.ViewModels
 
         #endregion
 
+        #region NextTaskProperty
+
+        private Task _nextTask;
+
+        public Task NextTask
+        {
+            get => _nextTask;
+            set => Set(ref _nextTask, value);
+        }
+
+        #endregion
+
+        #region TimeBeforeTaskProperty
+
+        private string _timeBeforeTask;
+
+        public string TimeBeforeTask
+        {
+            get => _timeBeforeTask;
+            set => Set(ref _timeBeforeTask, value);
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -217,7 +242,7 @@ namespace Diary.ViewModels
             DateTime end = start + new TimeSpan(Int32.Parse(DurationHours), Int32.Parse(DurationMinutes), 0);
             NewTask = new Task(start, end, Place, TaskName);
             diary.AddTask(NewTask);
-            TasksForDay.Add(NewTask);
+            TasksForDay = new ObservableCollection<Task>(diary.TasksAtDay(Day));
         }
 
         #endregion

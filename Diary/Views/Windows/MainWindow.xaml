@@ -23,227 +23,227 @@
                 <Label Content="Next Task:" Width="65" Margin="5,0"/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="{Binding SelectedTask}" />
+                <TextBlock Text="Event" />
             </StatusBarItem>
             <StatusBarItem>
-                <Label Content="Selected Task:" Width="85" Margin="5,0"/>
+                <Label Content="will start in" Width="70" Margin="5,0"/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="{Binding SelectedTask}" />
+                <TextBlock Text="5" />
             </StatusBarItem>
         </StatusBar>
-        <TabControl>
-            <TabItem Header="Add Task">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" MinWidth="300" MaxWidth="350"/>
-                        <ColumnDefinition Width="3*" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0"
-                                Orientation="Vertical"
-                                Width="300"
-                                HorizontalAlignment="Left">
+        <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="300" MaxWidth="350"/>
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
+                        Orientation="Vertical"
+                        Width="300"
+                        HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" Height="25">
+                    <Label Content="Day" Width="90" Margin="5,0"/>
+                    <DatePicker x:Name="datePicker" Width="100"
+                                SelectedDate="{Binding Day}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedDateChanged" SourceObject="{Binding ElementName=datePicker}">
+                                <i:InvokeCommandAction Command="{Binding ViewTasksForDayCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DatePicker>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25">
+                    <Label Content="Start Task" Width="90" Margin="5,0"/>
+                    <WrapPanel>
+                        <ComboBox IsEditable="True" Text="{Binding StartHours}">
+                            <ComboBoxItem>00</ComboBoxItem>
+                            <ComboBoxItem>01</ComboBoxItem>
+                            <ComboBoxItem>02</ComboBoxItem>
+                            <ComboBoxItem>03</ComboBoxItem>
+                            <ComboBoxItem>04</ComboBoxItem>
+                            <ComboBoxItem>05</ComboBoxItem>
+                            <ComboBoxItem>06</ComboBoxItem>
+                            <ComboBoxItem>07</ComboBoxItem>
+                            <ComboBoxItem>08</ComboBoxItem>
+                            <ComboBoxItem>09</ComboBoxItem>
+                            <ComboBoxItem>10</ComboBoxItem>
+                            <ComboBoxItem>11</ComboBoxItem>
+                            <ComboBoxItem>12</ComboBoxItem>
+                            <ComboBoxItem>13</ComboBoxItem>
+                            <ComboBoxItem>14</ComboBoxItem>
+                            <ComboBoxItem>15</ComboBoxItem>
+                            <ComboBoxItem>16</ComboBoxItem>
+                            <ComboBoxItem>17</ComboBoxItem>
+                            <ComboBoxItem>18</ComboBoxItem>
+                            <ComboBoxItem>19</ComboBoxItem>
+                            <ComboBoxItem>20</ComboBoxItem>
+                            <ComboBoxItem>21</ComboBoxItem>
+                            <ComboBoxItem>22</ComboBoxItem>
+                            <ComboBoxItem>23</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text=":"/>
+                        <ComboBox IsEditable="True" Text="{Binding StartMinutes}">
+                            <ComboBoxItem>00</ComboBoxItem>
+                            <ComboBoxItem>01</ComboBoxItem>
+                            <ComboBoxItem>02</ComboBoxItem>
+                            <ComboBoxItem>03</ComboBoxItem>
+                            <ComboBoxItem>04</ComboBoxItem>
+                            <ComboBoxItem>05</ComboBoxItem>
+                            <ComboBoxItem>06</ComboBoxItem>
+                            <ComboBoxItem>07</ComboBoxItem>
+                            <ComboBoxItem>08</ComboBoxItem>
+                            <ComboBoxItem>09</ComboBoxItem>
+                            <ComboBoxItem>10</ComboBoxItem>
+                            <ComboBoxItem>11</ComboBoxItem>
+                            <ComboBoxItem>12</ComboBoxItem>
+                            <ComboBoxItem>13</ComboBoxItem>
+                            <ComboBoxItem>14</ComboBoxItem>
+                            <ComboBoxItem>15</ComboBoxItem>
+                            <ComboBoxItem>16</ComboBoxItem>
+                            <ComboBoxItem>17</ComboBoxItem>
+                            <ComboBoxItem>18</ComboBoxItem>
+                            <ComboBoxItem>19</ComboBoxItem>
+                            <ComboBoxItem>20</ComboBoxItem>
+                            <ComboBoxItem>21</ComboBoxItem>
+                            <ComboBoxItem>22</ComboBoxItem>
+                            <ComboBoxItem>23</ComboBoxItem>
+                            <ComboBoxItem>24</ComboBoxItem>
+                            <ComboBoxItem>25</ComboBoxItem>
+                            <ComboBoxItem>26</ComboBoxItem>
+                            <ComboBoxItem>27</ComboBoxItem>
+                            <ComboBoxItem>28</ComboBoxItem>
+                            <ComboBoxItem>29</ComboBoxItem>
+                            <ComboBoxItem>30</ComboBoxItem>
+                            <ComboBoxItem>31</ComboBoxItem>
+                            <ComboBoxItem>32</ComboBoxItem>
+                            <ComboBoxItem>33</ComboBoxItem>
+                            <ComboBoxItem>34</ComboBoxItem>
+                            <ComboBoxItem>35</ComboBoxItem>
+                            <ComboBoxItem>36</ComboBoxItem>
+                            <ComboBoxItem>37</ComboBoxItem>
+                            <ComboBoxItem>38</ComboBoxItem>
+                            <ComboBoxItem>39</ComboBoxItem>
+                            <ComboBoxItem>40</ComboBoxItem>
+                            <ComboBoxItem>41</ComboBoxItem>
+                            <ComboBoxItem>42</ComboBoxItem>
+                            <ComboBoxItem>43</ComboBoxItem>
+                            <ComboBoxItem>44</ComboBoxItem>
+                            <ComboBoxItem>45</ComboBoxItem>
+                            <ComboBoxItem>46</ComboBoxItem>
+                            <ComboBoxItem>47</ComboBoxItem>
+                            <ComboBoxItem>48</ComboBoxItem>
+                            <ComboBoxItem>49</ComboBoxItem>
+                            <ComboBoxItem>50</ComboBoxItem>
+                            <ComboBoxItem>51</ComboBoxItem>
+                            <ComboBoxItem>52</ComboBoxItem>
+                            <ComboBoxItem>53</ComboBoxItem>
+                            <ComboBoxItem>54</ComboBoxItem>
+                            <ComboBoxItem>55</ComboBoxItem>
+                            <ComboBoxItem>56</ComboBoxItem>
+                            <ComboBoxItem>57</ComboBoxItem>
+                            <ComboBoxItem>58</ComboBoxItem>
+                            <ComboBoxItem>59</ComboBoxItem>
+                        </ComboBox>
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25">
+                    <Label Content="Task duration" Width="90" Margin="5,0"/>
+                    <WrapPanel>
+                        <ComboBox IsEditable="True" Text="{Binding DurationHours}">
+                            <ComboBoxItem>00</ComboBoxItem>
+                            <ComboBoxItem>01</ComboBoxItem>
+                            <ComboBoxItem>02</ComboBoxItem>
+                            <ComboBoxItem>03</ComboBoxItem>
+                            <ComboBoxItem>04</ComboBoxItem>
+                            <ComboBoxItem>05</ComboBoxItem>
+                            <ComboBoxItem>06</ComboBoxItem>
+                            <ComboBoxItem>07</ComboBoxItem>
+                            <ComboBoxItem>08</ComboBoxItem>
+                            <ComboBoxItem>09</ComboBoxItem>
+                            <ComboBoxItem>10</ComboBoxItem>
+                            <ComboBoxItem>11</ComboBoxItem>
+                            <ComboBoxItem>12</ComboBoxItem>
+                            <ComboBoxItem>13</ComboBoxItem>
+                            <ComboBoxItem>14</ComboBoxItem>
+                            <ComboBoxItem>15</ComboBoxItem>
+                            <ComboBoxItem>16</ComboBoxItem>
+                            <ComboBoxItem>17</ComboBoxItem>
+                            <ComboBoxItem>18</ComboBoxItem>
+                            <ComboBoxItem>19</ComboBoxItem>
+                            <ComboBoxItem>20</ComboBoxItem>
+                            <ComboBoxItem>21</ComboBoxItem>
+                            <ComboBoxItem>22</ComboBoxItem>
+                            <ComboBoxItem>23</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text=":"/>
+                        <ComboBox IsEditable="True" Text="{Binding DurationMinutes}">
+                            <ComboBoxItem>00</ComboBoxItem>
+                            <ComboBoxItem>05</ComboBoxItem>
+                            <ComboBoxItem>10</ComboBoxItem>
+                            <ComboBoxItem>15</ComboBoxItem>
+                            <ComboBoxItem>20</ComboBoxItem>
+                            <ComboBoxItem>25</ComboBoxItem>
+                            <ComboBoxItem>30</ComboBoxItem>
+                            <ComboBoxItem>35</ComboBoxItem>
+                            <ComboBoxItem>40</ComboBoxItem>
+                            <ComboBoxItem>45</ComboBoxItem>
+                            <ComboBoxItem>50</ComboBoxItem>
+                            <ComboBoxItem>55</ComboBoxItem>
+                        </ComboBox>
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25">
+                    <Label Content="Place" Width="90" Margin="5,0"/>
+                    <TextBox Width="200" Text="{Binding Place}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25">
+                    <Label Content="Name" Width="90" Margin="5,0"/>
+                    <TextBox Width="200" Text="{Binding TaskName}"/>
+                </StackPanel>
+                <Button Content="Create" Height="30" Width="150"
+                        Margin="10"
+                        Command="{Binding AddTaskCommand}"/>
+            </StackPanel>
+            <GroupBox Grid.Column="1" Header="{Binding Day}">
+                <DockPanel>
+                    <DockPanel.Resources>
+                        <CollectionViewSource x:Key="TasksCollection"
+                                              x:Name="TasksCollection"
+                                              Source="{Binding TasksForDay}"
+                                              Filter="TasksCollectionFilter"/>
+                    </DockPanel.Resources>
+                    <DockPanel DockPanel.Dock="Top" Margin="0,3">
+                        <TextBlock Text="Search:" Width="45" Margin="3,0" />
+                        <TextBox Name="TaskPlaceFilterText" TextChanged="OnTasksFilterTextChanged"/>
+                    </DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Height="25">
-                        <Label Content="Day" Width="90" Margin="5,0"/>
-                            <DatePicker x:Name="datePicker" Width="100"
-                                    SelectedDate="{Binding Day}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectedDateChanged" SourceObject="{Binding ElementName=datePicker}">
-                                        <i:InvokeCommandAction Command="{Binding ViewTasksForDayCommand}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </DatePicker>
+                            <Label Content="Selected Task:" Width="85" Margin="5,0"/>
+                            <TextBlock Text="{Binding SelectedTask}" VerticalAlignment="Center" />
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="25">
-                            <Label Content="Start Task" Width="90" Margin="5,0"/>
-                            <WrapPanel>
-                                <ComboBox IsEditable="True" Text="{Binding StartHours}">
-                                    <ComboBoxItem>00</ComboBoxItem>
-                                    <ComboBoxItem>01</ComboBoxItem>
-                                    <ComboBoxItem>02</ComboBoxItem>
-                                    <ComboBoxItem>03</ComboBoxItem>
-                                    <ComboBoxItem>04</ComboBoxItem>
-                                    <ComboBoxItem>05</ComboBoxItem>
-                                    <ComboBoxItem>06</ComboBoxItem>
-                                    <ComboBoxItem>07</ComboBoxItem>
-                                    <ComboBoxItem>08</ComboBoxItem>
-                                    <ComboBoxItem>09</ComboBoxItem>
-                                    <ComboBoxItem>10</ComboBoxItem>
-                                    <ComboBoxItem>11</ComboBoxItem>
-                                    <ComboBoxItem>12</ComboBoxItem>
-                                    <ComboBoxItem>13</ComboBoxItem>
-                                    <ComboBoxItem>14</ComboBoxItem>
-                                    <ComboBoxItem>15</ComboBoxItem>
-                                    <ComboBoxItem>16</ComboBoxItem>
-                                    <ComboBoxItem>17</ComboBoxItem>
-                                    <ComboBoxItem>18</ComboBoxItem>
-                                    <ComboBoxItem>19</ComboBoxItem>
-                                    <ComboBoxItem>20</ComboBoxItem>
-                                    <ComboBoxItem>21</ComboBoxItem>
-                                    <ComboBoxItem>22</ComboBoxItem>
-                                    <ComboBoxItem>23</ComboBoxItem>
-                                </ComboBox>
-                                <TextBlock Text=":"/>
-                                <ComboBox IsEditable="True" Text="{Binding StartMinutes}">
-                                    <ComboBoxItem>00</ComboBoxItem>
-                                    <ComboBoxItem>01</ComboBoxItem>
-                                    <ComboBoxItem>02</ComboBoxItem>
-                                    <ComboBoxItem>03</ComboBoxItem>
-                                    <ComboBoxItem>04</ComboBoxItem>
-                                    <ComboBoxItem>05</ComboBoxItem>
-                                    <ComboBoxItem>06</ComboBoxItem>
-                                    <ComboBoxItem>07</ComboBoxItem>
-                                    <ComboBoxItem>08</ComboBoxItem>
-                                    <ComboBoxItem>09</ComboBoxItem>
-                                    <ComboBoxItem>10</ComboBoxItem>
-                                    <ComboBoxItem>11</ComboBoxItem>
-                                    <ComboBoxItem>12</ComboBoxItem>
-                                    <ComboBoxItem>13</ComboBoxItem>
-                                    <ComboBoxItem>14</ComboBoxItem>
-                                    <ComboBoxItem>15</ComboBoxItem>
-                                    <ComboBoxItem>16</ComboBoxItem>
-                                    <ComboBoxItem>17</ComboBoxItem>
-                                    <ComboBoxItem>18</ComboBoxItem>
-                                    <ComboBoxItem>19</ComboBoxItem>
-                                    <ComboBoxItem>20</ComboBoxItem>
-                                    <ComboBoxItem>21</ComboBoxItem>
-                                    <ComboBoxItem>22</ComboBoxItem>
-                                    <ComboBoxItem>23</ComboBoxItem>
-                                    <ComboBoxItem>24</ComboBoxItem>
-                                    <ComboBoxItem>25</ComboBoxItem>
-                                    <ComboBoxItem>26</ComboBoxItem>
-                                    <ComboBoxItem>27</ComboBoxItem>
-                                    <ComboBoxItem>28</ComboBoxItem>
-                                    <ComboBoxItem>29</ComboBoxItem>
-                                    <ComboBoxItem>30</ComboBoxItem>
-                                    <ComboBoxItem>31</ComboBoxItem>
-                                    <ComboBoxItem>32</ComboBoxItem>
-                                    <ComboBoxItem>33</ComboBoxItem>
-                                    <ComboBoxItem>34</ComboBoxItem>
-                                    <ComboBoxItem>35</ComboBoxItem>
-                                    <ComboBoxItem>36</ComboBoxItem>
-                                    <ComboBoxItem>37</ComboBoxItem>
-                                    <ComboBoxItem>38</ComboBoxItem>
-                                    <ComboBoxItem>39</ComboBoxItem>
-                                    <ComboBoxItem>40</ComboBoxItem>
-                                    <ComboBoxItem>41</ComboBoxItem>
-                                    <ComboBoxItem>42</ComboBoxItem>
-                                    <ComboBoxItem>43</ComboBoxItem>
-                                    <ComboBoxItem>44</ComboBoxItem>
-                                    <ComboBoxItem>45</ComboBoxItem>
-                                    <ComboBoxItem>46</ComboBoxItem>
-                                    <ComboBoxItem>47</ComboBoxItem>
-                                    <ComboBoxItem>48</ComboBoxItem>
-                                    <ComboBoxItem>49</ComboBoxItem>
-                                    <ComboBoxItem>50</ComboBoxItem>
-                                    <ComboBoxItem>51</ComboBoxItem>
-                                    <ComboBoxItem>52</ComboBoxItem>
-                                    <ComboBoxItem>53</ComboBoxItem>
-                                    <ComboBoxItem>54</ComboBoxItem>
-                                    <ComboBoxItem>55</ComboBoxItem>
-                                    <ComboBoxItem>56</ComboBoxItem>
-                                    <ComboBoxItem>57</ComboBoxItem>
-                                    <ComboBoxItem>58</ComboBoxItem>
-                                    <ComboBoxItem>59</ComboBoxItem>
-                                </ComboBox>
-                            </WrapPanel>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="25">
-                            <Label Content="Task duration" Width="90" Margin="5,0"/>
-                            <WrapPanel>
-                                <ComboBox IsEditable="True" Text="{Binding DurationHours}">
-                                    <ComboBoxItem>00</ComboBoxItem>
-                                    <ComboBoxItem>01</ComboBoxItem>
-                                    <ComboBoxItem>02</ComboBoxItem>
-                                    <ComboBoxItem>03</ComboBoxItem>
-                                    <ComboBoxItem>04</ComboBoxItem>
-                                    <ComboBoxItem>05</ComboBoxItem>
-                                    <ComboBoxItem>06</ComboBoxItem>
-                                    <ComboBoxItem>07</ComboBoxItem>
-                                    <ComboBoxItem>08</ComboBoxItem>
-                                    <ComboBoxItem>09</ComboBoxItem>
-                                    <ComboBoxItem>10</ComboBoxItem>
-                                    <ComboBoxItem>11</ComboBoxItem>
-                                    <ComboBoxItem>12</ComboBoxItem>
-                                    <ComboBoxItem>13</ComboBoxItem>
-                                    <ComboBoxItem>14</ComboBoxItem>
-                                    <ComboBoxItem>15</ComboBoxItem>
-                                    <ComboBoxItem>16</ComboBoxItem>
-                                    <ComboBoxItem>17</ComboBoxItem>
-                                    <ComboBoxItem>18</ComboBoxItem>
-                                    <ComboBoxItem>19</ComboBoxItem>
-                                    <ComboBoxItem>20</ComboBoxItem>
-                                    <ComboBoxItem>21</ComboBoxItem>
-                                    <ComboBoxItem>22</ComboBoxItem>
-                                    <ComboBoxItem>23</ComboBoxItem>
-                                </ComboBox>
-                                <TextBlock Text=":"/>
-                                <ComboBox IsEditable="True" Text="{Binding DurationMinutes}">
-                                    <ComboBoxItem>00</ComboBoxItem>
-                                    <ComboBoxItem>05</ComboBoxItem>
-                                    <ComboBoxItem>10</ComboBoxItem>
-                                    <ComboBoxItem>15</ComboBoxItem>
-                                    <ComboBoxItem>20</ComboBoxItem>
-                                    <ComboBoxItem>25</ComboBoxItem>
-                                    <ComboBoxItem>30</ComboBoxItem>
-                                    <ComboBoxItem>35</ComboBoxItem>
-                                    <ComboBoxItem>40</ComboBoxItem>
-                                    <ComboBoxItem>45</ComboBoxItem>
-                                    <ComboBoxItem>50</ComboBoxItem>
-                                    <ComboBoxItem>55</ComboBoxItem>
-                                </ComboBox>
-                            </WrapPanel>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="25">
-                            <Label Content="Place" Width="90" Margin="5,0"/>
-                            <TextBox Width="200" Text="{Binding Place}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="25">
-                            <Label Content="Name" Width="90" Margin="5,0"/>
-                            <TextBox Width="200" Text="{Binding TaskName}"/>
-                        </StackPanel>
-                        <Button Content="Create" Height="30" Width="150"
-                                Margin="10"
-                                Command="{Binding AddTaskCommand}"/>
+                        <UniformGrid Rows="1" Margin="0,3">
+                            <Button Content="Delete" Margin="3,0" Padding="3,5" Background="White"
+                                    Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding SelectedTask}" />
+                            <Button Content="Move" Margin="3,0" Padding="3,5" Background="White"
+                                    Command="{Binding MoveTaskCommand}" CommandParameter="{Binding SelectedTask}" />
+                        </UniformGrid>
                     </StackPanel>
-                    <GroupBox Grid.Column="1" Header="{Binding Day}">
-                        <DockPanel>
-                            <DockPanel.Resources>
-                                <CollectionViewSource x:Key="TasksCollection"
-                                                      x:Name="TasksCollection"
-                                                      Source="{Binding TasksForDay}"
-                                                      Filter="TasksCollectionFilter"/>
-                            </DockPanel.Resources>
-                            <DockPanel DockPanel.Dock="Top" Margin="0,3">
-                                <TextBlock Text="Search:" Width="45" Margin="3,0" />
-                                <TextBox Name="TaskPlaceFilterText" TextChanged="OnTasksFilterTextChanged"/>
-                            </DockPanel>                            
-                            <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
-                                <Button Content="Delete" Margin="3,0" Padding="3,5" Background="White"
-                                        Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding SelectedTask}" />
-                                <Button Content="Move" Margin="3,0" Padding="3,5" Background="White"
-                                        Command="{Binding MoveTaskCommand}" CommandParameter="{Binding SelectedTask}" />
-                            </UniformGrid>
-                            <DataGrid ItemsSource="{Binding Source={StaticResource TasksCollection}}"
-                                      SelectedItem="{Binding SelectedTask}"
-                                  AutoGenerateColumns="False"
-                                  IsReadOnly="True"
-                                  GridLinesVisibility="Vertical"
-                                  VerticalGridLinesBrush="DarkGray"
-                                  AlternatingRowBackground="LightGray">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Start" Binding="{Binding Start, StringFormat=HH:mm}"/>
-                                    <DataGridTextColumn Header="End" Binding="{Binding End, StringFormat=HH:mm}"/>
-                                    <DataGridTextColumn Header="Place" Binding="{Binding Place}"/>
-                                    <DataGridTextColumn Header="Task" Binding="{Binding Name}" Width="*" />
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </DockPanel>
-                    </GroupBox>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Yesteday Tasks">
-            </TabItem>
-        </TabControl>
+                    <DataGrid ItemsSource="{Binding Source={StaticResource TasksCollection}}"
+                              SelectedItem="{Binding SelectedTask}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              GridLinesVisibility="Vertical"
+                              VerticalGridLinesBrush="DarkGray"
+                              AlternatingRowBackground="LightGray">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Start" Binding="{Binding Start, StringFormat=HH:mm}"/>
+                            <DataGridTextColumn Header="End" Binding="{Binding End, StringFormat=HH:mm}"/>
+                            <DataGridTextColumn Header="Place" Binding="{Binding Place}"/>
+                            <DataGridTextColumn Header="Task" Binding="{Binding Name}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+        </Grid>
     </DockPanel>
 </Window>
