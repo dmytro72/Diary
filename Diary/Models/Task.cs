@@ -24,7 +24,7 @@ namespace Diary.Models
 
         public override string ToString()
         {
-            return $"{Start:dd.MM.yyyy HH:mm} - {End:HH:mm} {Name} => {Place}";
+            return $"{Start:HH:mm} - {End:HH:mm} {Name} => {Place}";
         }
 
     }

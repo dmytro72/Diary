@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Diary.ViewModels
 {
@@ -329,6 +330,8 @@ namespace Diary.ViewModels
 
         private SimpleDiary diary;
 
+        private DispatcherTimer timer;
+
         public MainWindowViewModel()
         {
             #region Commands
@@ -345,6 +348,24 @@ namespace Diary.ViewModels
 
             diary = SimpleDiary.FromFile(FILENAME);
             TasksForDay = new ObservableCollection<Task>(diary.TasksAtDay(DateTime.Today));
+
+            timer = new DispatcherTimer();
+            timer.Tick += (s, e) =>
+            {
+                DateTime time = DateTime.Now;
+                if (diary.IsAfter(time))
+                {
+                    NextTask = diary.NextTask(time);
+                    TimeBeforeTask = (NextTask.Start - time).ToString(@"hh\:mm\:ss");
+                }
+                else
+                {
+                    NextTask = null;
+                    TimeBeforeTask = null;
+                }
+            };
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Start();
         }
     }
 }
